@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import cookieParser from "cookie-parser";
 import cors from "cors"
 import connection from './databse/db.js'
+import { errorMiddleware } from "./middlewares/error.middleware.js";
 
 dotenv.config();
 
@@ -21,5 +22,16 @@ app.use(json())
 app.use(urlencoded({extended: true}))
 
 connection()
+
+//error handle middleware 
+app.use(errorMiddleware)
+
+
+
+
+
+
+
+
 
 export default app
